@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>untitled</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Ed Finkler">
+	<!-- Date: 2010-05-15 -->
+	
+	<script src="libs/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+	
+
+	
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+		
+		/*
+			constructor for Robot
+		*/
+		var Robot = function(name) {
+			this.name = name;
+			/*
+				redefine toString
+			*/
+			this.toString = function() {
+				return '[Robot named '+this.name+']';
+			};
+
+			this.shutDown = function() {
+				console.log(this.name + ' is shutting down…');
+			};
+
+			this.say = function(something) {
+				console.log("In a robot voice, "+this.name+" says:\n"+something);
+			};
+		};
+		
+
+		var murphy = new Robot('Murphy');
+		/*
+			redefine toString
+		*/
+		murphy.toString = function() {
+			return '[Robocop named '+this.name+']';
+		};
+		
+		/*
+			add a new method
+		*/
+		murphy.arrest = function() {
+			console.log('Come with me or there will be… trouble');
+		};
+		
+		/*
+			this redefines shutDown and calls the "parent" version as well
+		*/
+		murphy.shutDown = function() {
+			this.say(this.name+' requires sleep!');
+		};
+		
+		function is_robot(obj) {
+			if (obj instanceof Robot) {
+				console.log(obj.name + ' is a Robot');
+			} else {
+				console.log(obj.name + ' is NOT a Robot');
+			}
+		}		
+		
+		var robby = new Robot('Robby');
+		console.log(robby.toString());
+		robby.shutDown();
+		is_robot(robby);
+		
+		console.log(murphy.toString());
+		murphy.arrest();
+		murphy.shutDown();
+		is_robot(murphy);
+		
+	</script>
+</body>
+</html>

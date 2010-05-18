@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>untitled</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Ed Finkler">
+	<!-- Date: 2010-05-15 -->
+	
+	<script src="libs/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+	
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+		console.log('REGEXP CONSTRUCTOR vs LITERAL');
+		console.log('a1b2c3d4'.replace(new RegExp("\\d", 'gi'), '0'));
+		console.log('a1b2c3d4'.replace(/\d/gi, '0'));
+		
+		console.log('ARRAY CONSTRUCTOR vs LITERAL');
+		var arr1 = new Array(1,2,3,4);
+		var arr2 = [1,2,3,4];
+		console.log(arr1);
+		console.log(arr2);
+		
+		console.log('OBJECT CONSTRUCTOR vs LITERAL');
+		var obj1 = new Object();
+		obj1['foo'] = 'bar';
+		obj1.foo2= 'baz';
+		var obj2 = {
+			'foo' :'bar',
+			'foo2':'baz'
+		};
+		console.log(obj1);
+		console.log(obj2);
+    </script>
+</body>
+</html>

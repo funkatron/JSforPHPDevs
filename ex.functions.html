@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>untitled</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Ed Finkler">
+	<!-- Date: 2010-05-15 -->
+	
+	<script src="libs/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+	
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+
+		/*
+			a procedural-style func
+		*/
+		function foo(str) {
+			console.log('foo says "'+str+'"');
+		}
+		
+		/*
+			a function is an object - and a constructor
+		*/
+		var foo2 = function(str) {
+			this.str = str;
+			
+			this.say = function() {
+				console.log('foo2 says "'+this.str+'"');
+			};
+			
+			this.say();
+			
+			/*
+				dump arguments
+			*/
+			for (var i=0; i < arguments.length; i++) {
+				console.log('arguments['+i+']:'+arguments[i]);
+			}
+			console.log('arguments.callee:'+arguments.callee);
+			
+		};
+		
+		
+	
+		foo('Hello!');
+
+		foo2('Hi there!', 'uno', 'dos');
+		
+		/*
+			foo2 can be a constructor too
+		*/
+		var foo3 = new foo2('Why hello!');
+		foo3.say();
+		
+
+    </script>
+</body>
+</html>
