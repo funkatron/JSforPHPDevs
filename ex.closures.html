@@ -8,30 +8,42 @@
 	<meta name="generator" content="TextMate http://macromates.com/">
 	<meta name="author" content="Ed Finkler">
 	<!-- Date: 2010-05-15 -->
+	<link rel="stylesheet" href="css/base.css">
 	
 	<script src="libs/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="onready.js"></script>
 	
 </head>
 <body>
 
-	<script type="text/javascript" charset="utf-8">
+	<script type="text/javascript" charset="utf-8" id="thiscode">
 		
-		function foo1() {
+		function uberfoo() {
 			
-			var var1 = "Someday I will be part of a closure";
+			var bar = 'uberclosure';
 			
-			function foo2() {
-				
-				console.log('From foo2:'+var1);
-				
+			function foo1() {
+
+				var var1 = "Someday I will be part of a closure";
+
+				this.foo2 = function() {
+
+					console.log('From foo2:'+var1);
+					console.log('From foo2:'+bar);
+
+				}
+
+				foo2();
+
 			}
 			
-			foo2();
+			foo1();
 			
 		}
 		
 		
-		foo1();
+		uberfoo();
+
 		
 		if (undefined === window.var1) {
 			console.log('var1 is not global!');

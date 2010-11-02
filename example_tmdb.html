@@ -151,7 +151,7 @@
 			}
 	</style>
 	
-	<script type="text/javascript" charset="utf-8">
+	<script type="text/javascript" charset="utf-8" id="thiscode">
 		$().ready(function() {
 			var tmdb = new SpazTMDB({
 				'apikey':'dc8485d730448e7699e1371838695084'
@@ -173,7 +173,7 @@
 				switch (button_id) {
 					case 'search-movies':
 						search_for = $('#search-for-movies').val();
-						tmdb.movieSearch(
+						tmdb.movieSearch( // takes search val, success, failure
 							search_for,
 							function(data, textStatus) {
 								
@@ -194,7 +194,7 @@
 						break;
 					case 'search-people':
 						search_for = $('#search-for-people').val();
-						tmdb.personSearch(							
+						tmdb.personSearch( // takes search val, success, failure						
 							search_for,
 							function(data, textStatus) {
 								$('#response').text(data);

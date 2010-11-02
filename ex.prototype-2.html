@@ -8,30 +8,26 @@
 	<meta name="generator" content="TextMate http://macromates.com/">
 	<meta name="author" content="Ed Finkler">
 	<!-- Date: 2010-05-15 -->
+	<link rel="stylesheet" href="css/base.css">
 	
 	<script src="libs/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
-	
+	<script src="onready.js"></script>
 
 	
 </head>
 <body>
-    <script type="text/javascript" charset="utf-8">
+	<h1>With Prototypes</h1>
+    <script type="text/javascript" charset="utf-8" id="thiscode">
 		
-/*
-			constructor for Robot
-*/
+		/* constructor for Robot */
 		var Robot = function(name) {
 			this.name = name;
 		};
 
-/*
-			property in prototye
-*/
+		/* property in prototye */
 		Robot.prototype.name = null;
 
-/*
-			redefine toString
-*/
+		/* redefine toString */
 		Robot.prototype.toString = function() {
 			return '[Robot named '+this.name+']';
 		};
@@ -45,44 +41,32 @@
 		};
 
 
-/*
-			constructor for new object
-*/
+		/* constructor for new object */
 		var Robocop = function(name) {
 			this.name = name;
 		};
 
-/*
-			inherit the prototype of Robot
-*/
+		/* inherit the prototype of Robot */
 		Robocop.prototype = new Robot();
 
-/*
-			redefine toString
-*/
+		/* redefine toString */
 		Robocop.prototype.toString = function() {
 			return '[Robocop named '+this.name+']';
 		};
 
-/*
-			add a new method
-*/
+		/* add a new method */
 		Robocop.prototype.arrest = function() {
 			this.say('Come with me or there will be… trouble');
 		};
 
-/*
-			this redefines shutDown and calls the "parent" version as well
-*/
+		/* this redefines shutDown and calls the "parent" version as well */
 		Robocop.prototype.shutDown = function() {
 			this.say(this.name+' requires sleep!');
 			Robot.prototype.shutDown.call(this);
 		};
 
 
-/*
-			Make a couple functions to check instanceof
-*/
+		/* Make a couple functions to check instanceof */
 		function is_robot(obj) {
 			if (obj instanceof Robot) {
 				console.log(obj.name + ' is a Robot');
@@ -100,9 +84,7 @@
 		}
 
 
-/*
-			now make a couple object instances
-*/
+		/* now make a couple object instances */
 		var robby = new Robot('Robby');
 		console.log(robby.toString());
 		robby.shutDown();
@@ -115,17 +97,14 @@
 		is_robot(murphy);
 		is_robocop(murphy);
 
-/*
-			add a new function to the base prototype
-*/
+		/* add a new function to the base prototype */
 		Robot.prototype.shockAttack = function() {
 			console.log(this.name + " zaps you!");
 		}
 
-/*
-			use the new function in an inheriting object
-*/
+		/* use the new function in an inheriting object */
 		murphy.shockAttack();
+		
 		murphy.shutDown();
 		
 	</script>

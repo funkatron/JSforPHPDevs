@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="css/base.css" type="text/css" media="screen" title="no title" charset="utf-8">
 
 	
-	<script type="text/javascript" charset="utf-8">
+	<script type="text/javascript" charset="utf-8" id="thiscode">
 	
 	/*
 		display the data passed from the event
@@ -24,16 +24,12 @@
 	function showShortUrl(e, data) {
 		
 		$('#results').fadeIn(200, function() {
-			$('#short-url').html(data.shorturl);	
+			$('#short-url').html(data);	
 		});
 		
 	}
 
 	function showMultipleShortURLs(e, data) {
-		
-		// $('#multiple-results').fadeIn(200, function() {
-		// 	$('#shortened-URLs').html(sc.helpers.getEventData(e));	
-		// });
 		
 		var html = jQuery('#multiple_url').val();
 		html = sc.helpers.replaceMultiple(html, data);
@@ -49,7 +45,7 @@
 		
 	}
 	
-	$().ready( function() {
+	$(document).ready( function() {
 
 		/*
 			add event listeners
@@ -64,6 +60,11 @@
 			Make a shortURL object instance
 		*/
 		var shurl = new SpazShortURL( $('#service').val() );
+
+		$('#service').change(function() {
+			shurl = new SpazShortURL( $('#service').val() );
+		});
+
 
 		$('#shorten').click(function() {
 
@@ -134,37 +135,38 @@
 </head>
 
 <body>
-	<form>
-		<label for="long_url">Long url</label>
-		<input type="text" name="long_url" size="60" value="http://www.cherny.com/webdev/60/javascript-function-arguments-default-values-passing-objects-and-overloading" id="long_url" /><br>
+	<div id="shorten-url-form" class="section">
+		<form>
+			<label for="long_url">Long url</label>
+			<input type="text" name="long_url" size="60" value="http://www.cherny.com/webdev/60/javascript-function-arguments-default-values-passing-objects-and-overloading" id="long_url" /><br>
 
-		<select name="service" id="service">
-			<option value="short.ie">short.ie</option>
-			<option value="bit.ly">bit.ly</option>
-			<option value="is.gd">is.gd</option>
-		</select>
-		<input type="button" name="shorten" value="Shorten!" id="shorten">
-	</form>
+			<select name="service" id="service">
+				<option value="bit.ly" selected>bit.ly</option>
+				<option value="j.mp">j.mp</option>
+			</select>
+			<input type="button" name="shorten" value="Shorten!" id="shorten">
+		</form>
 	
-	<div id="results">
-		<p>Short URL: <span id="short-url"></span></p>
+		<div id="results" style="display:none">
+			<p>Short URL: <span id="short-url"></span></p>
+		</div>
 	</div>
 
-
-	<form>
-		<label for="expand_short_url">Short url</label>
-		<input type="text" name="expand_short_url" size="60" value="http://short.ie/hv6uo5" id="expand_short_url" /><br>
-		<input type="button" name="expand" value="Expand!" id="expand">
-	</form>
+	<div id="expand-url-form" class="section">
+		<form>
+			<label for="expand_short_url">Short url</label>
+			<input type="text" name="expand_short_url" size="60" value="http://bit.ly/4A2JB" id="expand_short_url" /><br>
+			<input type="button" name="expand" value="Expand!" id="expand">
+		</form>
 	
-	<div id="expand-results">
-		<p>Long URL: <span id="expanded_url"></span></p>
+		<div id="expand-results"  style="display:none">
+			<p>Long URL: <span id="expanded_url"></span></p>
+		</div>
 	</div>
 	
-	
-	<form>
+	<form id="shorten-multiple-form" class="section">
 		<label for="multiple_url">Multiple URLs</label><br>
-		<textarea name="multiple_url" id="multiple_url" rows="8" cols="40">sweet baby jesus http://www.irregularwebcomic.net/2339.html apricot jam: http://www.flickr.com/photos/mellowynk/3649114702/</textarea><br>
+		<textarea name="multiple_url" id="multiple_url" rows="8" cols="40">Sweet Jimmy! http://www.irregularwebcomic.net/2339.html apricot jam: http://www.flickr.com/photos/mellowynk/3649114702/</textarea><br>
 		<input type="button" name="shorten-multiple" value="Shorten Multiple!" id="shorten-multiple">
 	</form>
 	

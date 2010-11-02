@@ -8,23 +8,22 @@
 	<meta name="generator" content="TextMate http://macromates.com/">
 	<meta name="author" content="Ed Finkler">
 	<!-- Date: 2010-05-15 -->
+	<link rel="stylesheet" href="css/base.css">
 	
 	<script src="libs/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
-	
+	<script src="onready.js"></script>
 
 	
 </head>
 <body>
-    <script type="text/javascript" charset="utf-8">
+	<h1>Without Prototypes</h1>
+	<script type="text/javascript" charset="utf-8" id="thiscode">
 		
-		/*
-			constructor for Robot
-		*/
+		/* constructor for Robot */
 		var Robot = function(name) {
 			this.name = name;
-			/*
-				redefine toString
-			*/
+			
+			/* redefine toString */
 			this.toString = function() {
 				return '[Robot named '+this.name+']';
 			};
@@ -38,25 +37,20 @@
 			};
 		};
 		
-
+		
 		var murphy = new Robot('Murphy');
-		/*
-			redefine toString
-		*/
+
+		/* redefine toString */
 		murphy.toString = function() {
 			return '[Robocop named '+this.name+']';
 		};
 		
-		/*
-			add a new method
-		*/
+		/* add a new method */
 		murphy.arrest = function() {
 			console.log('Come with me or there will be… trouble');
 		};
 		
-		/*
-			this redefines shutDown and calls the "parent" version as well
-		*/
+		/* this redefines shutDown */
 		murphy.shutDown = function() {
 			this.say(this.name+' requires sleep!');
 		};

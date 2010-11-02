@@ -23,3 +23,17 @@ body {
 	cursor: pointer;
 }
 
+.section {
+	border-top:1px solid 'grey';
+	border-bottom:1px solid 'grey';
+	background:#FFFFCC;
+	padding:10px;
+	margin-bottom:2em;
+}
+
+code { white-space:pre }
+code .keyword              { font-weight: bold }
+code .string, code .regexp { color: green }
+code .class, code .special { color: blue }
+code .number               { color: red }
+code .comment              { color: #666666; background-color:#EEE; }

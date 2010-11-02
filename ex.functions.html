@@ -8,12 +8,14 @@
 	<meta name="generator" content="TextMate http://macromates.com/">
 	<meta name="author" content="Ed Finkler">
 	<!-- Date: 2010-05-15 -->
+	<link rel="stylesheet" href="css/base.css">
 	
 	<script src="libs/jquery-1.4.2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="onready.js"></script>
 	
 </head>
 <body>
-    <script type="text/javascript" charset="utf-8">
+    <script type="text/javascript" charset="utf-8" id="thiscode">
 
 		/*
 			a procedural-style func
@@ -25,7 +27,7 @@
 		/*
 			a function is an object - and a constructor
 		*/
-		var foo2 = function(str) {
+		var Foo2 = function(str) {
 			this.str = str;
 			
 			this.say = function() {
@@ -48,12 +50,12 @@
 	
 		foo('Hello!');
 
-		foo2('Hi there!', 'uno', 'dos');
+		Foo2('Hi there!', 'uno', 'dos');
 		
 		/*
 			foo2 can be a constructor too
 		*/
-		var foo3 = new foo2('Why hello!');
+		var foo3 = new Foo2('Why hello!');
 		foo3.say();
 		
 
